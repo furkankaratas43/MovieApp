@@ -1,31 +1,42 @@
 ﻿@model Movie
 @{
-    ViewData["Title"] = "Home Page";
+    @if (Model != null)
+    {
+        ViewData["Title"] = Model.Name;
+    }
+    else
+    {
+        ViewData["Title"] = "Abirik";
+    }
 }
-<div class="row">
-    <div class="col-md-3">
-        <partial name="_menu" />
-    </div>
-    <div class="col-md-9">
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-md-3">
+            <partial name="_menu" />
+        </div>
+        <div class="col-md-9">
 
-        <div class="card p-3 mb-3">
-            <div class="row g-0">
-                <div class="col-md-3">
-                    <img src="/img/@Model.ImageUrl" class="card-img" alt="@Model.Description">
-                </div>
-                <div class="col-md-9">
-                    <div class="card-body">
-                        <a asp-action="details" asp-controller="movie" asp-route-id="@Model.Id"
+            <div class="card p-3 mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="/img/@Model.ImageUrl" class="card-img" alt="@Model.Description">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <a asp-action="details" asp-controller="movie" asp-route-id="@Model.Id"
                             class="text-decoration-none text-dark">
-                            <h5 class="card-title">@Model.Name</h5>
-                        </a>
-                        <p class="card-text">@Model.Description</p>
-                        <p class="card-text">
-                            <small>3 gün önce</small>
-                        </p>
+                                <h5 class="card-title">@Model.Name</h5>
+                            </a>
+                            <p class="card-text">Kısa Açıklama: @Html.Raw(Model.ShortDescription)</p>
+                            <p class="card-text">Açıklama: @Html.Raw(Model.Description)</p>
+                            <p class="card-text">
+                                <small>3 gün önce</small>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+}

@@ -1,25 +1,28 @@
 @model IEnumerable<Movie>
 
-
-@foreach (var movie in Model)
+@if (Model != null)
 {
-    <div class="card mb-3">
-        <div class="row g-0">
-            <div class="col-md-3">
-                <img src="/img/@movie.ImageUrl" class="card-img" alt="@movie.Description">
-            </div>
-            <div class="col-md-9">
-                <div class="card-body">
-                    <a asp-action="details" asp-controller="movie" asp-route-id="@movie.Id"
+    @foreach (var movie in Model)
+    {
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-3">
+                    <img src="/img/@movie.ImageUrl" class="card-img" alt="@movie.Description">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <a asp-action="details" asp-controller="movie" asp-route-id="@movie.Id"
                     class="text-decoration-none text-dark">
-                        <h5 class="card-title">@movie.Name</h5>
-                    </a>
-                    <p class="card-text">@movie.Description</p>
-                    <p class="card-text">
-                        <small>3 gün önce</small>
-                    </p>
+                            <h5 class="card-title">@movie.Name</h5>
+                        </a>
+                        <p class="card-text">@Html.Raw(movie.ShortDescription)</p>
+                        <p class="card-text">
+                            <small>3 gün önce</small>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
+
 }

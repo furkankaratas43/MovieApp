@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using MovieApp.Data;
 using MovieApp.Models;
 
 namespace MovieApp.Controllers
@@ -14,7 +15,7 @@ namespace MovieApp.Controllers
         public IActionResult Details(int id)
         {
 
-            return View(Repository.GetById(id));
+            return View(MovieRepository.GetById(id));
         }
 
         public IActionResult List()
