@@ -1,18 +1,25 @@
-<div class="card mb-3">
-    <div class="row g-0">
-        <div class="col-md-3">
-            <img src="/img/1.jpg" class="card-img" alt="">
-        </div>
-        <div class="col-md-9">
-            <div class="card-body">
-                <h5 class="card-title">The Ides Of March</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. At quis quidem dignissimos
-                    illum, quisquam, inventore autem modi doloribus amet maxime fuga nostrum quibusdam, quo est?
-                    Inventore, error laudantium. Quos, provident!</p>
-                <p class="card-text">
-                    <small>3 gün önce</small>
-                </p>
+@model IEnumerable<Movie>
+
+
+@foreach (var movie in Model)
+{
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-3">
+                <img src="/img/@movie.ImageUrl" class="card-img" alt="@movie.Description">
+            </div>
+            <div class="col-md-9">
+                <div class="card-body">
+                    <a asp-action="details" asp-controller="movie" asp-route-id="@movie.Id"
+                    class="text-decoration-none text-dark">
+                        <h5 class="card-title">@movie.Name</h5>
+                    </a>
+                    <p class="card-text">@movie.Description</p>
+                    <p class="card-text">
+                        <small>3 gün önce</small>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</div>
+}

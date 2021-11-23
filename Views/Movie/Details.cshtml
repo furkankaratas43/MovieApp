@@ -1,9 +1,31 @@
-﻿@{
+﻿@model Movie
+@{
     ViewData["Title"] = "Home Page";
 }
+<div class="row">
+    <div class="col-md-3">
+        <partial name="_menu" />
+    </div>
+    <div class="col-md-9">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <div class="card p-3 mb-3">
+            <div class="row g-0">
+                <div class="col-md-3">
+                    <img src="/img/@Model.ImageUrl" class="card-img" alt="@Model.Description">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <a asp-action="details" asp-controller="movie" asp-route-id="@Model.Id"
+                            class="text-decoration-none text-dark">
+                            <h5 class="card-title">@Model.Name</h5>
+                        </a>
+                        <p class="card-text">@Model.Description</p>
+                        <p class="card-text">
+                            <small>3 gün önce</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-

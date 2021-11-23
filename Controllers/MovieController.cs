@@ -6,16 +6,20 @@ namespace MovieApp.Controllers
 {
     public class MovieController : Controller
     {
-        public IActionResult Index(){
-            return View();
-        }
-        
-        public IActionResult Details(){
+        public IActionResult Index()
+        {
             return View();
         }
 
-        public IActionResult List(){
+        public IActionResult Details(int id)
+        {
+
+            return View(Repository.GetById(id));
+        }
+
+        public IActionResult List()
+        {
             return View();
-        } 
+        }
     }
 }
