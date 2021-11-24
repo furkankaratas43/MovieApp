@@ -15,7 +15,7 @@ namespace MovieApp.Data
                     },
                 new Category() {
                     Id = 2,
-                     CategoryName = "Dram"
+                    CategoryName = "Dram"
                 },
                 new Category() {
                     Id = 3,

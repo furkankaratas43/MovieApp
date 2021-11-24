@@ -8,12 +8,15 @@ namespace MovieApp.Controllers;
 public class HomeController : Controller
 {
 
-    public IActionResult Index()
+    public IActionResult Index(int? id)
     {
-        MovieCategoryModel model = new MovieCategoryModel();
-        model.Movies = MovieRepository.Movies;
-        model.Categories = CategoryRepository.Categories;
-        return View(model);
+        var movies = MovieRepository.Movies;
+
+        if (id != null)
+        {
+            movies = movies.Where(i => i.CategoryId == id).ToList();
+        }
+        return View(movies);
     }
 
     public IActionResult Contact()

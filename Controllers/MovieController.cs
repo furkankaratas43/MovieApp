@@ -14,11 +14,8 @@ namespace MovieApp.Controllers
 
         public IActionResult Details(int id)
         {
-            MovieCategoryModel model = new MovieCategoryModel();
-            model.Categories = CategoryRepository.Categories;
-            model.Movie = MovieRepository.GetById(id);
 
-            return View(model);
+            return View(MovieRepository.GetById(id));
         }
 
         public IActionResult List()

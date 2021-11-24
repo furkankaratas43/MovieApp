@@ -1,0 +1,10 @@
+@model IEnumerable<Category>
+
+<ul class="list-group">
+    <a href="/" class="list-group-item text-dark text-decoration-none list-group-item-action">Tüm Kategoriler</a>
+
+    @foreach (var category in Model)
+    {
+        <a asp-controller="Home" asp-action="Index" asp-route-id="@category.Id" class="@(ViewBag.SelectedCategory == category.Id.ToString() ? "text-white active" : "text-dark") list-group-item text-decoration-none list-group-item-action">@category.CategoryName</a>
+    }
+</ul>

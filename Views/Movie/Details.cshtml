@@ -1,8 +1,8 @@
-﻿@model MovieCategoryModel
+﻿@model Movie
 @{
     @if (Model != null)
     {
-        ViewData["Title"] = Model.Movie.Name;
+        ViewData["Title"] = Model.Name;
     }
     else
     {
@@ -13,20 +13,20 @@
 {
     <div class="row">
         <div class="col-md-3">
-            @Html.Partial("_menu", Model.Categories)
+            @await Component.InvokeAsync("CategoryMenu")
         </div>
         <div class="col-md-9">
 
             <div class="card p-3 mb-3">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="/img/@Model.Movie.ImageUrl" class="card-img" alt="@Model.Movie.Description">
+                        <img src="/img/@Model.ImageUrl" class="card-img" alt="@Model.Description">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">@Model.Movie.Name</h5>
-                            <p class="card-text">Kısa Açıklama:<br /> @Html.Raw(Model.Movie.ShortDescription)</p>
-                            <p class="card-text">Açıklama:<br /> @Html.Raw(Model.Movie.Description)</p>
+                            <h5 class="card-title">@Model.Name</h5>
+                            <p class="card-text">Kısa Açıklama:<br /> @Html.Raw(Model.ShortDescription)</p>
+                            <p class="card-text">Açıklama:<br /> @Html.Raw(Model.Description)</p>
                             <p class="card-text">
                                 <small>3 gün önce</small>
                             </p>
