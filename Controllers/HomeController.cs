@@ -10,8 +10,10 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-
-        return View(MovieRepository.Movies);
+        MovieCategoryModel model = new MovieCategoryModel();
+        model.Movies = MovieRepository.Movies;
+        model.Categories = CategoryRepository.Categories;
+        return View(model);
     }
 
     public IActionResult Contact()
